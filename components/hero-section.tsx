@@ -55,7 +55,7 @@ export function HeroSection() {
                 <Users className="h-6 w-6 text-accent-foreground" />
               </div>
               <div>
-                <p className="text-2xl font-bold text-primary-foreground">500+</p>
+                <p className="text-2xl font-bold text-primary-foreground">150</p>
                 <p className="text-sm text-primary-foreground/80">Workers Placed</p>
               </div>
             </div>
@@ -64,7 +64,7 @@ export function HeroSection() {
                 <Building2 className="h-6 w-6 text-accent-foreground" />
               </div>
               <div>
-                <p className="text-2xl font-bold text-primary-foreground">50+</p>
+                <p className="text-2xl font-bold text-primary-foreground">25</p>
                 <p className="text-sm text-primary-foreground/80">Partner Sites</p>
               </div>
             </div>
@@ -73,7 +73,7 @@ export function HeroSection() {
                 <Award className="h-6 w-6 text-accent-foreground" />
               </div>
               <div>
-                <p className="text-2xl font-bold text-primary-foreground">20+</p>
+                <p className="text-2xl font-bold text-primary-foreground">5</p>
                 <p className="text-sm text-primary-foreground/80">Years Experience</p>
               </div>
             </div>

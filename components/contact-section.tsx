@@ -272,10 +272,12 @@ export function ContactSection() {
                     <div>
                       <p className="font-medium">Phone</p>
                       <a
-                        href="tel:1300000000"
+                        href="https://wa.me/61414425993"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="text-primary-foreground/80 hover:text-accent transition-colors"
                       >
-                        1300 AI PERSONNEL
+                        +61 414 425 993
                       </a>
                     </div>
                   </div>
@@ -286,10 +288,10 @@ export function ContactSection() {
                     <div>
                       <p className="font-medium">Email</p>
                       <a
-                        href="mailto:info@aipersonnel.com.au"
+                        href="mailto:office@aipersonnelaustralia.com"
                         className="text-primary-foreground/80 hover:text-accent transition-colors"
                       >
-                        info@aipersonnel.com.au
+                        office@aipersonnelaustralia.com
                       </a>
                     </div>
                   </div>
@@ -327,8 +329,8 @@ export function ContactSection() {
                   </div>
                   <div>
                     <p className="font-medium">Bali Office</p>
-                    <a href="mailto:recruitment@aipersonnel.com.au" className="text-sm opacity-90 hover:opacity-100">
-                      recruitment@aipersonnel.com.au
+                    <a href="mailto:bali@aipersonnelaustralia.com" className="text-sm opacity-90 hover:opacity-100 transition-opacity">
+                      bali@aipersonnelaustralia.com
                     </a>
                   </div>
                 </div>
