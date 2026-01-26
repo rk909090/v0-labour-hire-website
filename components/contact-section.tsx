@@ -36,7 +36,7 @@ export function ContactSection() {
     setErrorMessage("")
 
     try {
-      const response = await fetch("/api/send-inquiry", {
+      const response = await fetch("/send-inquiry.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
