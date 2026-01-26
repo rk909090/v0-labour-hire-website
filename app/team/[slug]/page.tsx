@@ -209,18 +209,20 @@ export default async function DirectorProfilePage({ params }: { params: Promise<
                   <h3 className="font-semibold mb-4">Get in Touch</h3>
                   <div className="space-y-3">
                     <a
-                      href="mailto:info@aipersonnel.com.au"
+                      href="mailto:office@aipersonnelaustralia.com"
                       className="flex items-center gap-3 text-primary-foreground/80 hover:text-accent transition-colors"
                     >
                       <Mail className="h-4 w-4" />
-                      <span className="text-sm">info@aipersonnel.com.au</span>
+                      <span className="text-sm">office@aipersonnelaustralia.com</span>
                     </a>
                     <a
-                      href="tel:+61000000000"
+                      href="https://wa.me/61414425993"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex items-center gap-3 text-primary-foreground/80 hover:text-accent transition-colors"
                     >
                       <Phone className="h-4 w-4" />
-                      <span className="text-sm">+61 000 000 000</span>
+                      <span className="text-sm">+61 414 425 993</span>
                     </a>
                     <a
                       href="#"

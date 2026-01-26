@@ -24,9 +24,9 @@ export function Header() {
       {/* Top bar */}
       <div className="bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 py-2 flex justify-end items-center gap-4 text-sm">
-          <a href="tel:+61000000000" className="flex items-center gap-2 hover:text-accent transition-colors">
+          <a href="https://wa.me/61414425993" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-accent transition-colors">
             <Phone className="h-4 w-4" />
-            <span>1300 AI PERSONNEL</span>
+            <span>+61 414 425 993</span>
           </a>
         </div>
       </div>
