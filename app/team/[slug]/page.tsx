@@ -55,17 +55,21 @@ Brendon's commitment to quality, efficiency, and practical, real-world results p
     image: "/images/brian-20chalmers.jpg",
     location: "Australia",
     experience: "25+ years",
-    specialty: "Business Development & Client Relations",
-    bio: `Brian brings a diverse mix of practical skill and business experience to AI Personnel Australia. A carpenter by trade, he has built a strong foundation in hands-on work, problem-solving, and delivering quality results.
+    specialty: "Sports Management & Client Solutions",
+    bio: `Brian brings a diverse combination of practical expertise and business experience to AI Personnel Australia. Trained as a Wood Machinist, he developed a strong foundation in hands-on work, problem-solving, and consistently delivering high-quality outcomes.
 
-For half of his working life, Brian has also operated within the promotional business sector, giving him valuable experience in client engagement, branding, and service delivery. His ability to blend practical know-how with business insight adds real strength to our team and supports our commitment to reliable, customer-focused staffing solutions.`,
+Building on this practical background, Brian transitioned into Sports and Recreation Management, where he accumulated over 20 years of experience across sports centre operations, player management, and broader sports management roles.
+
+In addition, for more than half of his professional career, Brian has operated within the promotional and marketing sector, gaining valuable expertise in client engagement, branding, and service delivery.
+
+Brian's ability to integrate practical know-how with commercial insight strengthens our team and supports AI Personnel Australia's commitment to dependable, customer-focused staffing solutions. He is a proven problem-solver, with a strong focus on effective solutions and logistical coordination.`,
     highlights: [
-      "Qualified carpenter by trade",
-      "Strong foundation in hands-on work",
-      "Extensive promotional business experience",
-      "Expert in client engagement",
-      "Skilled in branding and service delivery",
-      "Customer-focused approach",
+      "Trained Wood Machinist",
+      "20+ years Sports & Recreation Management",
+      "Sports centre operations expertise",
+      "Player management experience",
+      "Promotional and marketing sector specialist",
+      "Proven problem-solver & logistical coordinator",
     ],
   },
 }

@@ -7,18 +7,65 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
-import { Mail, Phone, MapPin, Clock, Send, CheckCircle2 } from "lucide-react"
+import { Mail, Phone, MapPin, Clock, Send, CheckCircle2, AlertCircle } from "lucide-react"
 
 export function ContactSection() {
-  const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success">("idle")
+  const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle")
+  const [errorMessage, setErrorMessage] = useState("")
   const [inquiryType, setInquiryType] = useState<"employer" | "jobseeker">("employer")
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    company: "",
+    message: "",
+  })
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.currentTarget
+    setFormData((prev) => ({
+      ...prev,
+      [id]: value,
+    }))
+  }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setFormStatus("submitting")
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-    setFormStatus("success")
+    setErrorMessage("")
+
+    try {
+      const response = await fetch("/send-inquiry.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...formData,
+          inquiryType,
+        }),
+      })
+
+      if (!response.ok) {
+        const errorData = await response.json()
+        throw new Error(errorData.error || "Failed to send inquiry")
+      }
+
+      setFormStatus("success")
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        company: "",
+        message: "",
+      })
+    } catch (error) {
+      console.error("Form submission error:", error)
+      setErrorMessage(error instanceof Error ? error.message : "An error occurred. Please try again.")
+      setFormStatus("error")
+    }
   }
 
   return (
@@ -74,6 +121,23 @@ export function ContactSection() {
                       We've received your enquiry and will be in touch within 24 hours.
                     </p>
                   </div>
+                ) : formStatus === "error" ? (
+                  <div className="text-center py-12">
+                    <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <AlertCircle className="h-8 w-8 text-red-600" />
+                    </div>
+                    <h3 className="text-xl font-bold text-foreground mb-2">Oops!</h3>
+                    <p className="text-muted-foreground mb-6">{errorMessage}</p>
+                    <Button
+                      onClick={() => {
+                        setFormStatus("idle")
+                        setErrorMessage("")
+                      }}
+                      className="bg-primary hover:bg-primary/90"
+                    >
+                      Try Again
+                    </Button>
+                  </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid sm:grid-cols-2 gap-4">
@@ -81,13 +145,27 @@ export function ContactSection() {
                         <label htmlFor="firstName" className="block text-sm font-medium text-foreground mb-2">
                           First Name *
                         </label>
-                        <Input id="firstName" required placeholder="John" className="bg-secondary border-0" />
+                        <Input
+                          id="firstName"
+                          value={formData.firstName}
+                          onChange={handleInputChange}
+                          required
+                          placeholder="John"
+                          className="bg-secondary border-0"
+                        />
                       </div>
                       <div>
                         <label htmlFor="lastName" className="block text-sm font-medium text-foreground mb-2">
                           Last Name *
                         </label>
-                        <Input id="lastName" required placeholder="Smith" className="bg-secondary border-0" />
+                        <Input
+                          id="lastName"
+                          value={formData.lastName}
+                          onChange={handleInputChange}
+                          required
+                          placeholder="Smith"
+                          className="bg-secondary border-0"
+                        />
                       </div>
                     </div>
 
@@ -99,6 +177,8 @@ export function ContactSection() {
                         <Input
                           id="email"
                           type="email"
+                          value={formData.email}
+                          onChange={handleInputChange}
                           required
                           placeholder="john@company.com"
                           className="bg-secondary border-0"
@@ -108,7 +188,14 @@ export function ContactSection() {
                         <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
                           Phone
                         </label>
-                        <Input id="phone" type="tel" placeholder="+61 400 000 000" className="bg-secondary border-0" />
+                        <Input
+                          id="phone"
+                          type="tel"
+                          value={formData.phone}
+                          onChange={handleInputChange}
+                          placeholder="+61 400 000 000"
+                          className="bg-secondary border-0"
+                        />
                       </div>
                     </div>
 
@@ -119,7 +206,9 @@ export function ContactSection() {
                         </label>
                         <Input
                           id="company"
-                          required
+                          value={formData.company}
+                          onChange={handleInputChange}
+                          required={inquiryType === "employer"}
                           placeholder="Your Company Pty Ltd"
                           className="bg-secondary border-0"
                         />
@@ -135,6 +224,8 @@ export function ContactSection() {
                       </label>
                       <Textarea
                         id="message"
+                        value={formData.message}
+                        onChange={handleInputChange}
                         required
                         rows={5}
                         placeholder={
