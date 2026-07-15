@@ -18,12 +18,12 @@ export function HeroSection() {
           <div className="absolute inset-0 bg-primary/88" />
         </div>
 
-        {/* C? — large, pinned right edge, high visibility */}
+        {/* C? — large, pinned right edge, fully white above overlay */}
         <span
-          className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-[18%] leading-none select-none pointer-events-none font-black"
+          className="absolute z-10 right-0 top-1/2 -translate-y-1/2 translate-x-[18%] leading-none select-none pointer-events-none font-black"
           style={{
             fontSize: "clamp(16rem, 28vw, 26rem)",
-            color: "rgba(255,255,255,0.13)",
+            color: "rgba(255,255,255,0.55)",
             fontFamily: "'Georgia', serif",
             lineHeight: 1,
           }}
@@ -32,16 +32,16 @@ export function HeroSection() {
           C?
         </span>
 
-        {/* Content — constrained to left ~60% so it never overlaps C? */}
-        <div className="relative z-10 flex flex-col items-start justify-center h-full px-10 lg:px-16 xl:px-20 py-16 w-full max-w-[60%]">
+        {/* Content — constrained to left ~60% so it never overlaps C?, above the letter */}
+        <div className="relative z-20 flex flex-col items-start justify-center h-full px-10 lg:px-16 xl:px-20 py-16 w-full max-w-[60%]">
           {/* Pill */}
           <div className="inline-flex items-center gap-2 bg-accent/20 border border-accent/30 text-primary-foreground px-4 py-2 rounded-full text-xs font-semibold tracking-wide uppercase mb-6">
             <Building2 className="h-3.5 w-3.5 text-accent" />
             For Employers
           </div>
 
-          {/* Heading — smaller */}
-          <h2 className="text-2xl md:text-3xl font-bold text-primary-foreground leading-snug mb-4 text-balance">
+          {/* Heading — regular bold body size */}
+          <h2 className="text-base md:text-lg font-bold text-primary-foreground leading-snug mb-4">
             Unlock your Workforce Potential with{" "}
             <span className="text-accent">AI Personnel Australia</span>
           </h2>
@@ -80,12 +80,12 @@ export function HeroSection() {
           <div className="absolute inset-0 bg-primary/83" />
         </div>
 
-        {/* W? — large, pinned left edge, high visibility */}
+        {/* W? — large, pinned left edge, fully white above overlay */}
         <span
-          className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-[10%] leading-none select-none pointer-events-none font-black"
+          className="absolute z-10 left-0 top-1/2 -translate-y-1/2 -translate-x-[10%] leading-none select-none pointer-events-none font-black"
           style={{
             fontSize: "clamp(16rem, 28vw, 26rem)",
-            color: "rgba(255,255,255,0.11)",
+            color: "rgba(255,255,255,0.55)",
             fontFamily: "'Georgia', serif",
             lineHeight: 1,
           }}
@@ -94,16 +94,16 @@ export function HeroSection() {
           W?
         </span>
 
-        {/* Content — constrained to right ~60% so it never overlaps W? */}
-        <div className="relative z-10 flex flex-col items-start justify-center h-full px-10 lg:px-16 xl:px-20 py-16 w-full max-w-[60%] ml-auto">
+        {/* Content — constrained to right ~60% so it never overlaps W?, above the letter */}
+        <div className="relative z-20 flex flex-col items-start justify-center h-full px-10 lg:px-16 xl:px-20 py-16 w-full max-w-[60%] ml-auto">
           {/* Pill */}
           <div className="inline-flex items-center gap-2 bg-accent/20 border border-accent/30 text-primary-foreground px-4 py-2 rounded-full text-xs font-semibold tracking-wide uppercase mb-6">
             <Users className="h-3.5 w-3.5 text-accent" />
             For Job Seekers
           </div>
 
-          {/* Heading — smaller */}
-          <h2 className="text-2xl md:text-3xl font-bold text-primary-foreground leading-snug mb-4 text-balance">
+          {/* Heading — regular bold body size */}
+          <h2 className="text-base md:text-lg font-bold text-primary-foreground leading-snug mb-4">
             Have you ever dreamt about{" "}
             <span className="text-accent">working in Australia?</span>
           </h2>

@@ -86,12 +86,6 @@ export function SplashSection() {
         </div>
       </div>
 
-      {/* ── Vertical divider ───────────────────────────────────── */}
-      <div className="hidden lg:block w-px bg-white/10 relative">
-        {/* Glow dot */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-accent shadow-lg shadow-accent/60" />
-      </div>
-
       {/* ── Right panel ────────────────────────────────────────── */}
       <div className="hidden lg:flex flex-col w-1/2 bg-[#060e1c]">
         {/* Top photo */}
@@ -107,9 +101,6 @@ export function SplashSection() {
             Hospitality & Kitchen
           </div>
         </div>
-
-        {/* Thin horizontal divider */}
-        <div className="h-px bg-white/10" />
 
         {/* Bottom photo */}
         <div className="flex-1 overflow-hidden relative">
