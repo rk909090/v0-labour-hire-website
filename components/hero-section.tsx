@@ -20,7 +20,8 @@ export function HeroSection() {
 
         {/* Decorative large letter */}
         <span
-          className="absolute bottom-0 right-0 text-[22rem] font-black leading-none text-primary-foreground/5 select-none pointer-events-none translate-x-8 translate-y-8"
+          className="absolute inset-0 flex items-center justify-center text-[32rem] font-black leading-none select-none pointer-events-none"
+          style={{ color: "rgba(255,255,255,0.07)", fontFamily: "serif" }}
           aria-hidden="true"
         >
           C
@@ -77,7 +78,8 @@ export function HeroSection() {
 
         {/* Decorative large letter */}
         <span
-          className="absolute bottom-0 left-0 text-[22rem] font-black leading-none text-primary-foreground/5 select-none pointer-events-none -translate-x-8 translate-y-8"
+          className="absolute inset-0 flex items-center justify-center text-[32rem] font-black leading-none select-none pointer-events-none"
+          style={{ color: "rgba(255,255,255,0.07)", fontFamily: "serif" }}
           aria-hidden="true"
         >
           W
