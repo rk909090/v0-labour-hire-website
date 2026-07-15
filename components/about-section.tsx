@@ -3,7 +3,7 @@ import { LegalBadge } from "@/components/legal-badge"
 
 const highlights = [
   "Quality hospitality professionals for mining & remote operations",
-  "Dedicated recruitment office in Indonesia",
+  "Dedicated international recruitment network",
   "Stringent screening and preparation processes",
   "Cultural understanding and workforce integration",
   "20+ years combined industry experience",
@@ -13,7 +13,6 @@ const highlights = [
 const stats = [
   { value: "20+", label: "Years Experience", description: "Combined industry expertise" },
   { value: "500+", label: "Placements Made", description: "Successful workforce placements" },
-  { value: "2", label: "Countries Active", description: "Australia & Indonesia operations" },
 ]
 
 export function AboutSection() {
@@ -71,9 +70,9 @@ export function AboutSection() {
               hospitality and support staff for mining sites and remote operations across Australia.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-8">
-              With deep industry knowledge and a dedicated recruitment office in Indonesia, we bridge the gap between
-              skilled professionals and Australian employers. Our hands-on approach ensures every candidate is
-              thoroughly screened, prepared, and work-ready.
+              With deep industry knowledge and an international recruitment network, we bridge the gap between
+              skilled professionals from around the globe and Australian employers. Our hands-on approach ensures
+              every candidate is thoroughly screened, prepared, and work-ready.
             </p>
 
             {/* Highlights */}
@@ -96,7 +95,7 @@ export function AboutSection() {
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
 
           {/* Left — 3 stat cards */}
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 gap-4">
             {stats.map((stat) => (
               <div
                 key={stat.label}
