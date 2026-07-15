@@ -1,4 +1,5 @@
 import { CheckCircle2 } from "lucide-react"
+import { LegalBadge } from "@/components/legal-badge"
 
 const highlights = [
   "Quality hospitality professionals for mining & remote operations",
@@ -67,7 +68,7 @@ export function AboutSection() {
             </p>
 
             {/* Highlights */}
-            <div className="grid sm:grid-cols-2 gap-4">
+            <div className="grid sm:grid-cols-2 gap-4 mb-8">
               {highlights.map((highlight, index) => (
                 <div key={index} className="flex items-start gap-3">
                   <CheckCircle2 className="h-5 w-5 text-accent mt-0.5 shrink-0" />
@@ -75,6 +76,9 @@ export function AboutSection() {
                 </div>
               ))}
             </div>
+
+            {/* Legal registration badge */}
+            <LegalBadge />
           </div>
         </div>
       </div>
