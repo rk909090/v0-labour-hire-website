@@ -93,18 +93,18 @@ export function AboutSection() {
         <div className="mt-14 mb-10 border-t border-border" />
 
         {/* Row 2 — Stats (left) + Legal badge (right) */}
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-stretch">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
 
           {/* Left — 3 stat cards */}
           <div className="grid grid-cols-3 gap-4">
             {stats.map((stat) => (
               <div
                 key={stat.label}
-                className="bg-background rounded-2xl p-5 shadow-sm border border-border flex flex-col justify-center items-center text-center"
+                className="bg-background rounded-2xl px-4 py-6 shadow-sm border border-border flex flex-col items-center text-center h-fit"
               >
-                <p className="text-3xl lg:text-4xl font-bold text-accent">{stat.value}</p>
-                <p className="text-sm font-semibold text-foreground mt-1">{stat.label}</p>
-                <p className="text-xs text-muted-foreground mt-1 leading-tight">{stat.description}</p>
+                <p className="text-3xl font-bold text-accent leading-none">{stat.value}</p>
+                <p className="text-sm font-semibold text-foreground mt-2">{stat.label}</p>
+                <p className="text-xs text-muted-foreground mt-1 leading-snug">{stat.description}</p>
               </div>
             ))}
           </div>
