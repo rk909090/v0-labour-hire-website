@@ -11,70 +11,53 @@ const highlights = [
 ]
 
 const stats = [
-  { value: "20+", label: "Years Experience" },
-  { value: "500+", label: "Placements Made" },
-  { value: "2", label: "Countries Active" },
+  { value: "20+", label: "Years Experience", description: "Combined industry expertise" },
+  { value: "500+", label: "Placements Made", description: "Successful workforce placements" },
+  { value: "2", label: "Countries Active", description: "Australia & Indonesia operations" },
 ]
 
 export function AboutSection() {
   return (
     <section id="about" className="py-20 lg:py-32 bg-secondary">
       <div className="container mx-auto px-4">
+
+        {/* Row 1 — Image collage + Text content */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
 
-          {/* Left — Image grid + stat bar + legal badge */}
-          <div className="flex flex-col gap-4">
-            {/* Image collage */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-4">
-                <div className="rounded-2xl overflow-hidden shadow-lg">
-                  <img
-                    src="/professional-chef-preparing-food-in-industrial-kit.jpg"
-                    alt="Professional chef at work"
-                    className="w-full h-52 lg:h-60 object-cover"
-                  />
-                </div>
-                <div className="rounded-2xl overflow-hidden shadow-lg">
-                  <img
-                    src="/mining-camp-accommodation-buildings-australian-out.jpg"
-                    alt="Mining camp facilities"
-                    className="w-full h-44 lg:h-52 object-cover"
-                  />
-                </div>
+          {/* Left — Image collage only */}
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-4">
+              <div className="rounded-2xl overflow-hidden shadow-lg">
+                <img
+                  src="/professional-chef-preparing-food-in-industrial-kit.jpg"
+                  alt="Professional chef at work"
+                  className="w-full h-56 lg:h-64 object-cover"
+                />
               </div>
-              <div className="space-y-4 pt-8">
-                <div className="rounded-2xl overflow-hidden shadow-lg">
-                  <img
-                    src="/business-meeting-recruitment-interview-professiona.jpg"
-                    alt="Recruitment interview"
-                    className="w-full h-44 lg:h-52 object-cover"
-                  />
-                </div>
-                <div className="rounded-2xl overflow-hidden shadow-lg">
-                  <img
-                    src="/mining-workers-walking-to-site-at-sunrise-silhouet.jpg"
-                    alt="Workers at mining site"
-                    className="w-full h-52 lg:h-60 object-cover"
-                  />
-                </div>
+              <div className="rounded-2xl overflow-hidden shadow-lg">
+                <img
+                  src="/mining-camp-accommodation-buildings-australian-out.jpg"
+                  alt="Mining camp facilities"
+                  className="w-full h-48 lg:h-56 object-cover"
+                />
               </div>
             </div>
-
-            {/* Stat bar */}
-            <div className="grid grid-cols-3 gap-3">
-              {stats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="bg-background rounded-xl px-4 py-4 text-center shadow-sm border border-border"
-                >
-                  <p className="text-2xl font-bold text-accent">{stat.value}</p>
-                  <p className="text-xs text-muted-foreground mt-0.5 leading-tight">{stat.label}</p>
-                </div>
-              ))}
+            <div className="space-y-4 pt-10">
+              <div className="rounded-2xl overflow-hidden shadow-lg">
+                <img
+                  src="/business-meeting-recruitment-interview-professiona.jpg"
+                  alt="Recruitment interview"
+                  className="w-full h-48 lg:h-56 object-cover"
+                />
+              </div>
+              <div className="rounded-2xl overflow-hidden shadow-lg">
+                <img
+                  src="/mining-workers-walking-to-site-at-sunrise-silhouet.jpg"
+                  alt="Workers at mining site"
+                  className="w-full h-56 lg:h-64 object-cover"
+                />
+              </div>
             </div>
-
-            {/* Legal badge — compact strip */}
-            <LegalBadge />
           </div>
 
           {/* Right — Text content */}
@@ -105,6 +88,32 @@ export function AboutSection() {
           </div>
 
         </div>
+
+        {/* Divider */}
+        <div className="mt-14 mb-10 border-t border-border" />
+
+        {/* Row 2 — Stats (left) + Legal badge (right) */}
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-stretch">
+
+          {/* Left — 3 stat cards */}
+          <div className="grid grid-cols-3 gap-4">
+            {stats.map((stat) => (
+              <div
+                key={stat.label}
+                className="bg-background rounded-2xl p-5 shadow-sm border border-border flex flex-col justify-center items-center text-center"
+              >
+                <p className="text-3xl lg:text-4xl font-bold text-accent">{stat.value}</p>
+                <p className="text-sm font-semibold text-foreground mt-1">{stat.label}</p>
+                <p className="text-xs text-muted-foreground mt-1 leading-tight">{stat.description}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Right — Legal badge */}
+          <LegalBadge />
+
+        </div>
+
       </div>
     </section>
   )

@@ -2,44 +2,50 @@ import { ShieldCheck } from "lucide-react"
 
 export function LegalBadge() {
   return (
-    <div className="bg-primary/5 border border-primary/15 rounded-2xl p-5">
-      {/* Header row */}
-      <div className="flex items-center gap-3 mb-4">
-        <div className="w-9 h-9 bg-accent/15 rounded-xl flex items-center justify-center shrink-0">
-          <ShieldCheck className="h-5 w-5 text-accent" />
+    <div className="bg-background border border-border rounded-2xl p-6 shadow-sm flex flex-col justify-between h-full">
+
+      {/* Header */}
+      <div className="flex items-start gap-4">
+        <div className="w-11 h-11 bg-accent/10 border border-accent/20 rounded-xl flex items-center justify-center shrink-0">
+          <ShieldCheck className="h-6 w-6 text-accent" />
         </div>
         <div className="flex-1 min-w-0">
-          <p className="text-sm font-semibold text-foreground">Fully Licensed &amp; Registered</p>
-          <p className="text-xs text-muted-foreground">Australian Company — ASIC Registered</p>
+          <p className="text-base font-bold text-foreground leading-tight">Fully Licensed &amp; Registered</p>
+          <p className="text-sm text-muted-foreground mt-0.5">Australian Company — ASIC Registered</p>
         </div>
-        <div className="shrink-0 bg-accent/10 border border-accent/20 rounded-lg px-3 py-1">
-          <p className="text-xs font-semibold text-accent">ACN 692 851 700</p>
-        </div>
-      </div>
-
-      {/* Details row */}
-      <div className="grid grid-cols-4 gap-2">
-        <div className="bg-background rounded-lg p-2.5 text-center">
-          <p className="text-[10px] text-muted-foreground mb-0.5">Legal Name</p>
-          <p className="text-[11px] font-semibold text-foreground leading-tight">AUSINDO<br />PTY LTD</p>
-        </div>
-        <div className="bg-background rounded-lg p-2.5 text-center">
-          <p className="text-[10px] text-muted-foreground mb-0.5">Type</p>
-          <p className="text-[11px] font-semibold text-foreground leading-tight">Proprietary<br />Limited</p>
-        </div>
-        <div className="bg-background rounded-lg p-2.5 text-center">
-          <p className="text-[10px] text-muted-foreground mb-0.5">State</p>
-          <p className="text-[11px] font-semibold text-foreground leading-tight">Western<br />Australia</p>
-        </div>
-        <div className="bg-background rounded-lg p-2.5 text-center">
-          <p className="text-[10px] text-muted-foreground mb-0.5">Registered</p>
-          <p className="text-[11px] font-semibold text-foreground leading-tight">14 Nov<br />2025</p>
+        <div className="shrink-0 bg-accent/10 border border-accent/25 rounded-lg px-3 py-1.5">
+          <p className="text-xs font-bold text-accent whitespace-nowrap">ACN 692 851 700</p>
         </div>
       </div>
 
-      <p className="text-[10px] text-muted-foreground mt-3 leading-relaxed">
+      {/* Divider */}
+      <div className="border-t border-border my-4" />
+
+      {/* Details grid — 2×2 */}
+      <div className="grid grid-cols-2 gap-3 flex-1">
+        <div className="bg-secondary rounded-xl p-3.5">
+          <p className="text-xs text-muted-foreground mb-1">Registered Legal Name</p>
+          <p className="text-sm font-semibold text-foreground">AUSINDO PTY LTD</p>
+        </div>
+        <div className="bg-secondary rounded-xl p-3.5">
+          <p className="text-xs text-muted-foreground mb-1">Company Type</p>
+          <p className="text-sm font-semibold text-foreground">Proprietary Limited</p>
+        </div>
+        <div className="bg-secondary rounded-xl p-3.5">
+          <p className="text-xs text-muted-foreground mb-1">Registered State</p>
+          <p className="text-sm font-semibold text-foreground">Western Australia</p>
+        </div>
+        <div className="bg-secondary rounded-xl p-3.5">
+          <p className="text-xs text-muted-foreground mb-1">Registered Since</p>
+          <p className="text-sm font-semibold text-foreground">14 November 2025</p>
+        </div>
+      </div>
+
+      {/* Footer note */}
+      <p className="text-[11px] text-muted-foreground mt-4 leading-relaxed">
         Certificate issued by the Australian Securities &amp; Investments Commission (ASIC) · Corporations Act 2001
       </p>
+
     </div>
   )
 }
