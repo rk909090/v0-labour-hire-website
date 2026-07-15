@@ -71,13 +71,13 @@ export function HeroSection() {
           </div>
 
           {/* Heading */}
-          <h2 className="text-base lg:text-lg font-bold text-white leading-snug mb-3 max-w-xs">
+          <h2 className="text-xl lg:text-2xl font-bold text-white leading-snug mb-3 max-w-xs">
             Unlock your workforce Potential with{" "}
             <span className="text-accent">AI Personnel Australia</span>
           </h2>
 
           {/* Subtitle */}
-          <p className="text-white/60 text-sm leading-relaxed mb-8 max-w-xs">
+          <p className="text-white/60 text-base leading-relaxed mb-8 max-w-xs">
             Specialising in hospitality and technical staff for mining sites and remote operations. We connect Australian businesses with skilled, work-ready professionals.
           </p>
 
@@ -158,13 +158,13 @@ export function HeroSection() {
           </div>
 
           {/* Heading */}
-          <h2 className="text-base lg:text-lg font-bold text-white leading-snug mb-3 max-w-xs">
+          <h2 className="text-xl lg:text-2xl font-bold text-white leading-snug mb-3 max-w-xs">
             Have you ever dreamt about{" "}
             <span className="text-accent">working in Australia?</span>
           </h2>
 
           {/* Subtitle */}
-          <p className="text-white/60 text-sm leading-relaxed mb-8 max-w-xs">
+          <p className="text-white/60 text-base leading-relaxed mb-8 max-w-xs">
             Short term or long term — AI Personnel opens career pathways into Australia&apos;s thriving resources sector. We find permanent placements, casual and contract roles for you.
           </p>
 
