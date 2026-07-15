@@ -48,8 +48,8 @@ export function JobsBoardSection() {
           </p>
         </div>
 
-        {/* Static job list */}
-        <div className="max-w-4xl mx-auto space-y-3 mb-16">
+        {/* Static job list — 2 columns */}
+        <div className="max-w-4xl mx-auto grid sm:grid-cols-2 gap-3 mb-16">
           {jobs.map((job) => {
             const Icon = job.icon
             return (
