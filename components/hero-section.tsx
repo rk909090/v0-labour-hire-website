@@ -8,54 +8,58 @@ export function HeroSection() {
 
       {/* ── Left column: Companies ─────────────────────────── */}
       <div className="relative flex-1 flex items-center justify-center min-h-[50vh] lg:min-h-screen overflow-hidden group">
-        {/* Background */}
+        {/* Background photo + overlay */}
         <div className="absolute inset-0 z-0">
           <img
             src="/industrial-kitchen-chef-cooking-in-commercial-mini.jpg"
             alt="Commercial kitchen operations"
             className="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-700"
           />
-          <div className="absolute inset-0 bg-primary/85" />
+          <div className="absolute inset-0 bg-primary/88" />
         </div>
 
-        {/* Decorative large letter */}
+        {/* C? — large, pinned right edge, high visibility */}
         <span
-          className="absolute inset-0 flex items-center justify-center text-[32rem] font-black leading-none select-none pointer-events-none"
-          style={{ color: "rgba(255,255,255,0.07)", fontFamily: "serif" }}
+          className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-[18%] leading-none select-none pointer-events-none font-black"
+          style={{
+            fontSize: "clamp(16rem, 28vw, 26rem)",
+            color: "rgba(255,255,255,0.13)",
+            fontFamily: "'Georgia', serif",
+            lineHeight: 1,
+          }}
           aria-hidden="true"
         >
-          C
+          C?
         </span>
 
-        {/* Content */}
-        <div className="relative z-10 flex flex-col items-start justify-center h-full px-10 lg:px-16 xl:px-24 py-20 max-w-2xl">
-          {/* Icon pill */}
-          <div className="inline-flex items-center gap-2 bg-accent/20 border border-accent/30 text-primary-foreground px-4 py-2 rounded-full text-sm font-medium mb-8">
-            <Building2 className="h-4 w-4 text-accent" />
+        {/* Content — constrained to left ~60% so it never overlaps C? */}
+        <div className="relative z-10 flex flex-col items-start justify-center h-full px-10 lg:px-16 xl:px-20 py-16 w-full max-w-[60%]">
+          {/* Pill */}
+          <div className="inline-flex items-center gap-2 bg-accent/20 border border-accent/30 text-primary-foreground px-4 py-2 rounded-full text-xs font-semibold tracking-wide uppercase mb-6">
+            <Building2 className="h-3.5 w-3.5 text-accent" />
             For Employers
           </div>
 
-          {/* Heading */}
-          <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-primary-foreground leading-tight mb-6 text-balance">
+          {/* Heading — smaller */}
+          <h2 className="text-2xl md:text-3xl font-bold text-primary-foreground leading-snug mb-4 text-balance">
             Unlock your Workforce Potential with{" "}
             <span className="text-accent">AI Personnel Australia</span>
           </h2>
 
-          {/* Sub-heading */}
-          <p className="text-primary-foreground/80 text-lg leading-relaxed mb-10 max-w-lg">
-            Specialising in hospitality and technical staff for mining sites and remote operations. We connect
-            Australian businesses with skilled, work-ready professionals from Australia and abroad.
+          {/* Sub — smaller */}
+          <p className="text-primary-foreground/70 text-sm leading-relaxed mb-8 max-w-sm">
+            Specialising in hospitality and technical staff for mining sites and remote operations. We connect Australian businesses with skilled, work-ready professionals.
           </p>
 
-          {/* CTA */}
+          {/* CTA — bigger text */}
           <Button
             asChild
             size="lg"
-            className="bg-accent hover:bg-accent/90 text-accent-foreground text-base px-8 py-6 h-auto rounded-xl shadow-lg shadow-accent/20 transition-transform hover:scale-105"
+            className="bg-accent hover:bg-accent/90 text-accent-foreground text-xl font-bold px-10 py-7 h-auto rounded-2xl shadow-lg shadow-accent/25 transition-all hover:scale-105"
           >
             <Link href="#contact">
               Looking to Hire?
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <ArrowRight className="ml-3 h-6 w-6" />
             </Link>
           </Button>
         </div>
@@ -66,56 +70,58 @@ export function HeroSection() {
 
       {/* ── Right column: Workers ──────────────────────────── */}
       <div className="relative flex-1 flex items-center justify-center min-h-[50vh] lg:min-h-screen overflow-hidden group">
-        {/* Background */}
+        {/* Background photo + overlay */}
         <div className="absolute inset-0 z-0">
           <img
             src="/mining-workers-walking-to-site-at-sunrise-silhouet.jpg"
             alt="Mining workers at sunrise"
             className="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-700"
           />
-          <div className="absolute inset-0 bg-primary/80" />
+          <div className="absolute inset-0 bg-primary/83" />
         </div>
 
-        {/* Decorative large letter */}
+        {/* W? — large, pinned left edge, high visibility */}
         <span
-          className="absolute inset-0 flex items-center justify-center text-[32rem] font-black leading-none select-none pointer-events-none"
-          style={{ color: "rgba(255,255,255,0.07)", fontFamily: "serif" }}
+          className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-[10%] leading-none select-none pointer-events-none font-black"
+          style={{
+            fontSize: "clamp(16rem, 28vw, 26rem)",
+            color: "rgba(255,255,255,0.11)",
+            fontFamily: "'Georgia', serif",
+            lineHeight: 1,
+          }}
           aria-hidden="true"
         >
-          W
+          W?
         </span>
 
-        {/* Content */}
-        <div className="relative z-10 flex flex-col items-start justify-center h-full px-10 lg:px-16 xl:px-24 py-20 max-w-2xl">
-          {/* Icon pill */}
-          <div className="inline-flex items-center gap-2 bg-accent/20 border border-accent/30 text-primary-foreground px-4 py-2 rounded-full text-sm font-medium mb-8">
-            <Users className="h-4 w-4 text-accent" />
+        {/* Content — constrained to right ~60% so it never overlaps W? */}
+        <div className="relative z-10 flex flex-col items-start justify-center h-full px-10 lg:px-16 xl:px-20 py-16 w-full max-w-[60%] ml-auto">
+          {/* Pill */}
+          <div className="inline-flex items-center gap-2 bg-accent/20 border border-accent/30 text-primary-foreground px-4 py-2 rounded-full text-xs font-semibold tracking-wide uppercase mb-6">
+            <Users className="h-3.5 w-3.5 text-accent" />
             For Job Seekers
           </div>
 
-          {/* Heading */}
-          <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-primary-foreground leading-tight mb-6 text-balance">
+          {/* Heading — smaller */}
+          <h2 className="text-2xl md:text-3xl font-bold text-primary-foreground leading-snug mb-4 text-balance">
             Have you ever dreamt about{" "}
             <span className="text-accent">working in Australia?</span>
           </h2>
 
-          {/* Sub-heading */}
-          <p className="text-primary-foreground/80 text-lg leading-relaxed mb-10 max-w-lg">
-            The opportunity for short term experiences or long term career progression in Australia is what AI
-            Personnel strives for. Offering career progressing pathways to a career in Australia&apos;s thriving
-            resources sector. We find permanent placements, bespoke offerings, long and short term casual options for
-            you.
+          {/* Sub — smaller */}
+          <p className="text-primary-foreground/70 text-sm leading-relaxed mb-8 max-w-sm">
+            Short term or long term — AI Personnel opens career pathways into Australia&apos;s thriving resources sector. We find permanent placements, casual and contract roles for you.
           </p>
 
-          {/* CTA */}
+          {/* CTA — bigger text */}
           <Button
             asChild
             size="lg"
-            className="bg-accent hover:bg-accent/90 text-accent-foreground text-base px-8 py-6 h-auto rounded-xl shadow-lg shadow-accent/20 transition-transform hover:scale-105"
+            className="bg-accent hover:bg-accent/90 text-accent-foreground text-xl font-bold px-10 py-7 h-auto rounded-2xl shadow-lg shadow-accent/25 transition-all hover:scale-105"
           >
             <Link href="#jobs">
               Find Work Today
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <ArrowRight className="ml-3 h-6 w-6" />
             </Link>
           </Button>
         </div>
