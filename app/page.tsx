@@ -6,6 +6,7 @@ import { LocationsSection } from "@/components/locations-section"
 import { TeamSection } from "@/components/team-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { ContactSection } from "@/components/contact-section"
+import { JobsBoardSection } from "@/components/jobs-board-section"
 import { Footer } from "@/components/footer"
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
       <Header />
       <HeroSection />
       <ServicesSection />
+      <JobsBoardSection />
       <AboutSection />
       <LocationsSection />
       <TeamSection />

@@ -124,7 +124,7 @@ export function ServicesSection() {
               </div>
 
               <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground">
-                <Link href="#contact">
+                <Link href="#jobs">
                   Find Work Today
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
