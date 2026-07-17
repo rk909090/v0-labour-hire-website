@@ -1,7 +1,25 @@
 "use client"
 
 import { useState } from "react"
-import { ChefHat, Utensils, Bed, ClipboardCheck, Wrench, Send, Mail, Phone } from "lucide-react"
+import {
+  ChefHat,
+  Utensils,
+  Bed,
+  ClipboardCheck,
+  Wrench,
+  Cog,
+  Truck,
+  Zap,
+  Flame,
+  Settings,
+  HardHat,
+  LifeBuoy,
+  Power,
+  Briefcase,
+  Send,
+  Mail,
+  Phone,
+} from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { JobApplicationModal } from "@/components/job-application-modal"
 import { cn } from "@/lib/utils"
@@ -14,12 +32,22 @@ interface Job {
 }
 
 const jobs: Job[] = [
-  { id: 1, title: "Camp Cook / Chef",              category: "Kitchen",      icon: ChefHat       },
-  { id: 2, title: "Kitchen Hand",                  category: "Kitchen",      icon: Utensils      },
-  { id: 3, title: "Housekeeping Attendant",         category: "Housekeeping", icon: Bed           },
-  { id: 4, title: "Camp Services Supervisor",       category: "Management",   icon: ClipboardCheck},
-  { id: 5, title: "Catering Assistant",             category: "Kitchen",      icon: Utensils      },
-  { id: 6, title: "Maintenance & Facilities Hand",  category: "Facilities",   icon: Wrench        },
+  { id: 1,  title: "Camp Cook / Chef",              category: "Kitchen",      icon: ChefHat        },
+  { id: 2,  title: "Kitchen Hand",                  category: "Kitchen",      icon: Utensils       },
+  { id: 3,  title: "Housekeeping Attendant",        category: "Housekeeping", icon: Bed            },
+  { id: 4,  title: "Camp Services Supervisor",      category: "Management",   icon: ClipboardCheck },
+  { id: 5,  title: "Catering Assistant",            category: "Kitchen",      icon: Utensils       },
+  { id: 6,  title: "Maintenance & Facilities Hand", category: "Facilities",   icon: Wrench         },
+  { id: 7,  title: "Process Technician",            category: "Technical",    icon: Cog            },
+  { id: 8,  title: "Fixed & Mobile Plant Operator", category: "Operations",   icon: Truck          },
+  { id: 9,  title: "Mechanical Tradesmen",          category: "Trades",       icon: Wrench         },
+  { id: 10, title: "Electrical Tradesmen",          category: "Trades",       icon: Zap            },
+  { id: 11, title: "Boilermaker",                   category: "Trades",       icon: Flame          },
+  { id: 12, title: "Fitter",                        category: "Trades",       icon: Settings       },
+  { id: 13, title: "Safety Officer",                category: "Safety",       icon: HardHat        },
+  { id: 14, title: "Support Personnel",             category: "Support",      icon: LifeBuoy       },
+  { id: 15, title: "Shutdown Specialist",           category: "Projects",     icon: Power          },
+  { id: 16, title: "Project Based Specialist",      category: "Projects",     icon: Briefcase      },
 ]
 
 const categoryColors: Record<string, string> = {
@@ -27,6 +55,12 @@ const categoryColors: Record<string, string> = {
   Housekeeping: "bg-primary/10 text-primary",
   Management:   "bg-amber-100 text-amber-700",
   Facilities:   "bg-emerald-100 text-emerald-700",
+  Technical:    "bg-primary/10 text-primary",
+  Operations:   "bg-amber-100 text-amber-700",
+  Trades:       "bg-accent/10 text-accent",
+  Safety:       "bg-emerald-100 text-emerald-700",
+  Support:      "bg-primary/10 text-primary",
+  Projects:     "bg-amber-100 text-amber-700",
 }
 
 export function JobsBoardSection() {
