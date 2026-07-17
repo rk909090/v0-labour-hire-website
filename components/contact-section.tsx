@@ -7,12 +7,11 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
-import { Mail, Phone, MapPin, Clock, Send, CheckCircle2, AlertCircle } from "lucide-react"
+import { Mail, Phone, MapPin, Clock, Send, CheckCircle2, AlertCircle, Building2, Users } from "lucide-react"
 
 export function ContactSection() {
   const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle")
   const [errorMessage, setErrorMessage] = useState("")
-  const [inquiryType, setInquiryType] = useState<"employer" | "jobseeker">("employer")
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -24,10 +23,7 @@ export function ContactSection() {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.currentTarget
-    setFormData((prev) => ({
-      ...prev,
-      [id]: value,
-    }))
+    setFormData((prev) => ({ ...prev, [id]: value }))
   }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -38,29 +34,17 @@ export function ContactSection() {
     try {
       const response = await fetch("/send-inquiry.php", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...formData,
-          inquiryType,
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...formData, inquiryType: "employer" }),
       })
 
       if (!response.ok) {
         const errorData = await response.json()
-        throw new Error(errorData.error || "Failed to send inquiry")
+        throw new Error(errorData.error || "Failed to send enquiry")
       }
 
       setFormStatus("success")
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        company: "",
-        message: "",
-      })
+      setFormData({ firstName: "", lastName: "", email: "", phone: "", company: "", message: "" })
     } catch (error) {
       console.error("Form submission error:", error)
       setErrorMessage(error instanceof Error ? error.message : "An error occurred. Please try again.")
@@ -78,37 +62,24 @@ export function ContactSection() {
             Ready to Get Started?
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed">
-            Whether you're looking to hire quality staff or seeking work opportunities, we're here to help.
+            Tell us about your workforce needs and we will help you source the right people, fast.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
-          {/* Contact form */}
+          {/* Contact form — employer enquiry only */}
           <div className="lg:col-span-3">
             <Card className="border-0 shadow-xl">
               <CardContent className="p-8">
-                {/* Inquiry type toggle */}
-                <div className="flex gap-2 mb-8 p-1 bg-secondary rounded-lg">
-                  <button
-                    onClick={() => setInquiryType("employer")}
-                    className={`flex-1 py-3 px-4 rounded-md text-sm font-medium transition-all ${
-                      inquiryType === "employer"
-                        ? "bg-primary text-primary-foreground shadow-sm"
-                        : "text-muted-foreground hover:text-foreground"
-                    }`}
-                  >
-                    I'm Looking to Hire
-                  </button>
-                  <button
-                    onClick={() => setInquiryType("jobseeker")}
-                    className={`flex-1 py-3 px-4 rounded-md text-sm font-medium transition-all ${
-                      inquiryType === "jobseeker"
-                        ? "bg-accent text-accent-foreground shadow-sm"
-                        : "text-muted-foreground hover:text-foreground"
-                    }`}
-                  >
-                    I'm Looking for Work
-                  </button>
+                {/* Form heading */}
+                <div className="flex items-center gap-3 mb-8 pb-6 border-b border-border">
+                  <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center shrink-0">
+                    <Building2 className="h-5 w-5 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-foreground">Employer Staffing Enquiry</h3>
+                    <p className="text-sm text-muted-foreground">For businesses seeking qualified workers</p>
+                  </div>
                 </div>
 
                 {formStatus === "success" ? (
@@ -118,7 +89,7 @@ export function ContactSection() {
                     </div>
                     <h3 className="text-xl font-bold text-foreground mb-2">Thank You!</h3>
                     <p className="text-muted-foreground">
-                      We've received your enquiry and will be in touch within 24 hours.
+                      We&apos;ve received your enquiry and will be in touch within 24 hours.
                     </p>
                   </div>
                 ) : formStatus === "error" ? (
@@ -129,17 +100,14 @@ export function ContactSection() {
                     <h3 className="text-xl font-bold text-foreground mb-2">Oops!</h3>
                     <p className="text-muted-foreground mb-6">{errorMessage}</p>
                     <Button
-                      onClick={() => {
-                        setFormStatus("idle")
-                        setErrorMessage("")
-                      }}
+                      onClick={() => { setFormStatus("idle"); setErrorMessage("") }}
                       className="bg-primary hover:bg-primary/90"
                     >
                       Try Again
                     </Button>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <form onSubmit={handleSubmit} className="space-y-5">
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div>
                         <label htmlFor="firstName" className="block text-sm font-medium text-foreground mb-2">
@@ -167,6 +135,20 @@ export function ContactSection() {
                           className="bg-secondary border-0"
                         />
                       </div>
+                    </div>
+
+                    <div>
+                      <label htmlFor="company" className="block text-sm font-medium text-foreground mb-2">
+                        Company Name *
+                      </label>
+                      <Input
+                        id="company"
+                        value={formData.company}
+                        onChange={handleInputChange}
+                        required
+                        placeholder="Your Company Pty Ltd"
+                        className="bg-secondary border-0"
+                      />
                     </div>
 
                     <div className="grid sm:grid-cols-2 gap-4">
@@ -199,28 +181,9 @@ export function ContactSection() {
                       </div>
                     </div>
 
-                    {inquiryType === "employer" && (
-                      <div>
-                        <label htmlFor="company" className="block text-sm font-medium text-foreground mb-2">
-                          Company Name *
-                        </label>
-                        <Input
-                          id="company"
-                          value={formData.company}
-                          onChange={handleInputChange}
-                          required={inquiryType === "employer"}
-                          placeholder="Your Company Pty Ltd"
-                          className="bg-secondary border-0"
-                        />
-                      </div>
-                    )}
-
                     <div>
                       <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                        {inquiryType === "employer"
-                          ? "Tell us about your staffing needs"
-                          : "Tell us about your experience"}{" "}
-                        *
+                        Tell us about your staffing needs *
                       </label>
                       <Textarea
                         id="message"
@@ -228,11 +191,7 @@ export function ContactSection() {
                         onChange={handleInputChange}
                         required
                         rows={5}
-                        placeholder={
-                          inquiryType === "employer"
-                            ? "What positions are you looking to fill? How many staff do you need?"
-                            : "What is your background? What type of work are you looking for?"
-                        }
+                        placeholder="What positions are you looking to fill? How many staff do you need? What site or location?"
                         className="bg-secondary border-0 resize-none"
                       />
                     </div>
@@ -240,15 +199,13 @@ export function ContactSection() {
                     <Button
                       type="submit"
                       disabled={formStatus === "submitting"}
-                      className={`w-full ${
-                        inquiryType === "employer" ? "bg-primary hover:bg-primary/90" : "bg-accent hover:bg-accent/90"
-                      } text-primary-foreground`}
+                      className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
                     >
                       {formStatus === "submitting" ? (
                         "Sending..."
                       ) : (
                         <>
-                          Send Enquiry
+                          Send Staffing Enquiry
                           <Send className="ml-2 h-4 w-4" />
                         </>
                       )}
@@ -259,18 +216,24 @@ export function ContactSection() {
             </Card>
           </div>
 
-          {/* Contact info */}
+          {/* Contact info sidebar */}
           <div className="lg:col-span-2 space-y-6">
+            {/* Australian office — for employers */}
             <Card className="border-0 shadow-lg bg-primary text-primary-foreground">
               <CardContent className="p-8">
-                <h3 className="text-xl font-bold mb-6">Get in Touch</h3>
-                <div className="space-y-6">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-8 h-8 bg-primary-foreground/10 rounded-lg flex items-center justify-center shrink-0">
+                    <Building2 className="h-4 w-4 text-accent" />
+                  </div>
+                  <h3 className="text-lg font-bold">For Employers</h3>
+                </div>
+                <div className="space-y-5">
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 bg-primary-foreground/10 rounded-lg flex items-center justify-center shrink-0">
                       <Phone className="h-5 w-5 text-accent" />
                     </div>
                     <div>
-                      <p className="font-medium">Phone</p>
+                      <p className="font-medium text-sm">Australia</p>
                       <a
                         href="https://wa.me/61414425993"
                         target="_blank"
@@ -286,10 +249,10 @@ export function ContactSection() {
                       <Mail className="h-5 w-5 text-accent" />
                     </div>
                     <div>
-                      <p className="font-medium">Email</p>
+                      <p className="font-medium text-sm">Email</p>
                       <a
                         href="mailto:office@aipersonnelaustralia.com"
-                        className="text-primary-foreground/80 hover:text-accent transition-colors"
+                        className="text-primary-foreground/80 hover:text-accent transition-colors break-all"
                       >
                         office@aipersonnelaustralia.com
                       </a>
@@ -300,7 +263,7 @@ export function ContactSection() {
                       <MapPin className="h-5 w-5 text-accent" />
                     </div>
                     <div>
-                      <p className="font-medium">Head Office</p>
+                      <p className="font-medium text-sm">Head Office</p>
                       <p className="text-primary-foreground/80">Perth, Western Australia</p>
                     </div>
                   </div>
@@ -309,29 +272,56 @@ export function ContactSection() {
                       <Clock className="h-5 w-5 text-accent" />
                     </div>
                     <div>
-                      <p className="font-medium">Business Hours</p>
-                      <p className="text-primary-foreground/80">Mon - Fri: 8:00 AM - 6:00 PM AWST</p>
+                      <p className="font-medium text-sm">Business Hours</p>
+                      <p className="text-primary-foreground/80">Mon – Fri: 8:00 AM – 6:00 PM AWST</p>
                     </div>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
+            {/* Indonesia office — for job seekers */}
             <Card className="border-0 shadow-lg bg-accent text-accent-foreground">
               <CardContent className="p-8">
-                <h3 className="text-xl font-bold mb-4">Indonesia Recruitment Office</h3>
-                <p className="text-accent-foreground/90 mb-4">
-                  For candidate enquiries and recruitment operations in Indonesia.
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-accent-foreground/10 rounded-lg flex items-center justify-center">
-                    <Mail className="h-5 w-5" />
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-8 h-8 bg-accent-foreground/10 rounded-lg flex items-center justify-center shrink-0">
+                    <Users className="h-4 w-4" />
                   </div>
-                  <div>
-                    <p className="font-medium">Bali Office</p>
-                    <a href="mailto:bali@aipersonnelaustralia.com" className="text-sm opacity-90 hover:opacity-100 transition-opacity">
-                      bali@aipersonnelaustralia.com
-                    </a>
+                  <h3 className="text-lg font-bold">For Job Seekers</h3>
+                </div>
+                <p className="text-accent-foreground/80 text-sm mb-5 leading-relaxed">
+                  Interested in working in Australia? Reach out to our international recruitment team directly.
+                </p>
+                <div className="space-y-4">
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 bg-accent-foreground/10 rounded-lg flex items-center justify-center shrink-0">
+                      <Phone className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <p className="font-medium text-sm">Indonesia (WhatsApp)</p>
+                      <a
+                        href="https://wa.me/6285713710836"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-accent-foreground/80 hover:text-accent-foreground transition-colors"
+                      >
+                        +62 857 1371 0836
+                      </a>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 bg-accent-foreground/10 rounded-lg flex items-center justify-center shrink-0">
+                      <Mail className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <p className="font-medium text-sm">Email</p>
+                      <a
+                        href="mailto:office@aipersonnelaustralia.com"
+                        className="text-accent-foreground/80 hover:text-accent-foreground transition-colors break-all"
+                      >
+                        office@aipersonnelaustralia.com
+                      </a>
+                    </div>
                   </div>
                 </div>
               </CardContent>
