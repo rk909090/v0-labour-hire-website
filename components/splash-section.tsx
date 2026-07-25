@@ -51,9 +51,9 @@ export function SplashSection() {
         <div className="relative z-10">
           <div className="inline-block bg-white rounded-xl px-5 py-3 shadow-xl">
             <img
-              src="/images/logo-20ai-20personnel.jpeg"
+              src="/images/ai-personnel-logo.jpeg"
               alt="AI Personnel Australia"
-              className="h-10 w-auto"
+              className="h-16 w-auto"
             />
           </div>
         </div>
