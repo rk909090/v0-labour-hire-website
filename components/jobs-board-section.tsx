@@ -17,8 +17,6 @@ import {
   Power,
   Briefcase,
   Send,
-  Mail,
-  Phone,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { JobApplicationModal } from "@/components/job-application-modal"
@@ -108,69 +106,25 @@ export function JobsBoardSection() {
         {/* CV submission CTA — primary action */}
         <div className="max-w-4xl mx-auto">
           <div className="bg-primary rounded-3xl overflow-hidden">
-            <div className="px-8 py-12 md:px-14 md:py-14 flex flex-col md:flex-row items-center gap-10">
-
-              {/* Left — text */}
-              <div className="flex-1 text-center md:text-left">
-                <div className="inline-flex items-center gap-2 bg-accent/20 text-accent text-xs font-semibold uppercase tracking-wider px-3 py-1.5 rounded-full mb-5">
-                  <Send className="h-3.5 w-3.5" />
-                  Submit Your CV
-                </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-primary-foreground mb-4 text-balance">
-                  Interested in working with us?
-                </h3>
-                <p className="text-primary-foreground/70 leading-relaxed mb-6 max-w-lg">
-                  Fill out our short form and attach your CV. We recruit from around the globe — wherever you are,
-                  if you have the skills, we want to hear from you.
-                </p>
-                <Button
-                  onClick={() => setModalOpen(true)}
-                  className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 py-3 h-12 text-base"
-                >
-                  <Send className="h-4 w-4 mr-2" />
-                  Send Us Your CV
-                </Button>
+            <div className="px-8 py-14 md:px-16 md:py-16 text-center">
+              <div className="inline-flex items-center gap-2 bg-accent/20 text-accent text-xs font-semibold uppercase tracking-wider px-3 py-1.5 rounded-full mb-5">
+                <Send className="h-3.5 w-3.5" />
+                Submit Your CV
               </div>
-
-              {/* Right — contact options */}
-              <div className="shrink-0 w-full md:w-auto">
-                <div className="bg-primary-foreground/10 border border-primary-foreground/15 rounded-2xl p-6 space-y-4 min-w-[260px]">
-                  <p className="text-primary-foreground/60 text-xs font-semibold uppercase tracking-wider">
-                    Or reach us directly
-                  </p>
-                  <a
-                    href="mailto:office@aipersonnelaustralia.com"
-                    className="flex items-center gap-3 group"
-                  >
-                    <div className="w-9 h-9 bg-accent/20 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-accent/30 transition-colors">
-                      <Mail className="h-4 w-4 text-accent" />
-                    </div>
-                    <div>
-                      <p className="text-primary-foreground/60 text-xs">Email</p>
-                      <p className="text-primary-foreground text-sm font-medium group-hover:text-accent transition-colors">
-                        office@aipersonnelaustralia.com
-                      </p>
-                    </div>
-                  </a>
-                  <a
-                    href="https://wa.me/61414425993"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 group"
-                  >
-                    <div className="w-9 h-9 bg-accent/20 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-accent/30 transition-colors">
-                      <Phone className="h-4 w-4 text-accent" />
-                    </div>
-                    <div>
-                      <p className="text-primary-foreground/60 text-xs">WhatsApp</p>
-                      <p className="text-primary-foreground text-sm font-medium group-hover:text-accent transition-colors">
-                        +61 414 425 993
-                      </p>
-                    </div>
-                  </a>
-                </div>
-              </div>
-
+              <h3 className="text-2xl md:text-4xl font-bold text-primary-foreground mb-5 text-balance">
+                Interested in working with us?
+              </h3>
+              <p className="text-primary-foreground/70 leading-relaxed mb-8 max-w-2xl mx-auto text-lg">
+                Fill out our short form and attach your CV. We recruit from around the globe — wherever you are,
+                if you have the skills, we want to hear from you.
+              </p>
+              <Button
+                onClick={() => setModalOpen(true)}
+                className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-10 py-4 h-14 text-lg"
+              >
+                <Send className="h-5 w-5 mr-2" />
+                Send Us Your CV
+              </Button>
             </div>
           </div>
         </div>
@@ -180,7 +134,7 @@ export function JobsBoardSection() {
       {/* Application modal — generic, not tied to a specific role */}
       {modalOpen && (
         <JobApplicationModal
-          job={{ title: "General Application", location: "Mining & Remote Operations, Australia" }}
+          job={{ title: "General Application", location: "" }}
           onClose={() => setModalOpen(false)}
         />
       )}

@@ -2,9 +2,10 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Menu, X, Phone } from "lucide-react"
+import { Menu, X, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import { EmployerEnquiryModal } from "@/components/employer-enquiry-modal"
 
 const navLinks = [
   { href: "#home", label: "Home" },
@@ -18,15 +19,16 @@ const navLinks = [
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
+  const [enquiryOpen, setEnquiryOpen] = useState(false)
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
       {/* Top bar */}
       <div className="bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 py-2 flex justify-end items-center gap-4 text-sm">
-          <a href="https://wa.me/61414425993" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-accent transition-colors">
-            <Phone className="h-4 w-4" />
-            <span>+61 414 425 993</span>
+          <a href="mailto:office@aipersonnelaustralia.com" className="flex items-center gap-2 hover:text-accent transition-colors">
+            <Mail className="h-4 w-4" />
+            <span>office@aipersonnelaustralia.com</span>
           </a>
         </div>
       </div>
@@ -37,7 +39,7 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
             <div className="relative">
-              <img src="/images/logo-20ai-20personnel.jpeg" alt="AI Personnel Australia" className="h-14 w-auto" />
+              <img src="/images/ai-personnel-logo.jpeg" alt="AI Personnel Australia" className="h-14 w-auto" />
             </div>
             <div className="hidden sm:block">
               <span className="text-xl font-bold text-primary">AI Personnel</span>
@@ -60,8 +62,11 @@ export function Header() {
 
           {/* CTA Button */}
           <div className="hidden lg:flex items-center gap-4">
-            <Button asChild className="bg-accent hover:bg-accent/90 text-accent-foreground">
-              <Link href="#contact">Get In Touch</Link>
+            <Button
+              onClick={() => setEnquiryOpen(true)}
+              className="bg-accent hover:bg-accent/90 text-accent-foreground"
+            >
+              Get In Touch
             </Button>
           </div>
 
@@ -90,11 +95,16 @@ export function Header() {
               {link.label}
             </Link>
           ))}
-          <Button asChild className="bg-accent hover:bg-accent/90 text-accent-foreground mt-2">
-            <Link href="#contact">Get In Touch</Link>
+          <Button
+            onClick={() => { setIsOpen(false); setEnquiryOpen(true) }}
+            className="bg-accent hover:bg-accent/90 text-accent-foreground mt-2"
+          >
+            Get In Touch
           </Button>
         </nav>
       </div>
+
+      {enquiryOpen && <EmployerEnquiryModal onClose={() => setEnquiryOpen(false)} />}
     </header>
   )
 }
