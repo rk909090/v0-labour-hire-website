@@ -1,7 +1,8 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { createPortal } from "react-dom"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { X, CheckCircle2, AlertCircle, Building2 } from "lucide-react"
@@ -23,6 +24,15 @@ export function EmployerEnquiryModal({ onClose }: EmployerEnquiryModalProps) {
   const [formData, setFormData] = useState(INITIAL_FORM)
   const [submitted, setSubmitted] = useState(false)
   const [errors, setErrors] = useState<Partial<typeof INITIAL_FORM>>({})
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+    document.body.style.overflow = "hidden"
+    return () => {
+      document.body.style.overflow = ""
+    }
+  }, [])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.currentTarget
@@ -53,9 +63,9 @@ export function EmployerEnquiryModal({ onClose }: EmployerEnquiryModalProps) {
   const inputClass = "bg-secondary border-0 focus-visible:ring-ring"
   const errorClass = "text-xs text-destructive mt-1 flex items-center gap-1"
 
-  return (
+  const modalContent = (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      className="fixed inset-0 z-[200] flex items-center justify-center p-4"
       role="dialog"
       aria-modal="true"
       aria-labelledby="employer-modal-title"
@@ -63,7 +73,7 @@ export function EmployerEnquiryModal({ onClose }: EmployerEnquiryModalProps) {
       {/* Backdrop */}
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
 
-      {/* Modal */}
+      {/* Modal panel */}
       <div className="relative bg-background rounded-2xl shadow-2xl w-full max-w-lg max-h-[92vh] overflow-y-auto">
 
         {/* Header */}
@@ -145,7 +155,10 @@ export function EmployerEnquiryModal({ onClose }: EmployerEnquiryModalProps) {
             {/* State */}
             <div>
               <label htmlFor="state" className={labelClass}>
-                State <span className="text-destructive text-xs font-normal ml-1">(where your company operates and is based in)</span>
+                State{" "}
+                <span className="text-destructive text-xs font-normal ml-1">
+                  (where your company operates and is based in)
+                </span>
                 <span className="text-destructive"> *</span>
               </label>
               <Input id="state" name="state" value={formData.state} onChange={handleChange}
@@ -183,4 +196,7 @@ export function EmployerEnquiryModal({ onClose }: EmployerEnquiryModalProps) {
       </div>
     </div>
   )
+
+  if (!mounted) return null
+  return createPortal(modalContent, document.body)
 }

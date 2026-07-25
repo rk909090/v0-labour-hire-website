@@ -39,7 +39,7 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
             <div className="relative">
-              <img src="/images/logo-20ai-20personnel.jpeg" alt="AI Personnel Australia" className="h-14 w-auto" />
+              <img src="/images/ai-personnel-logo.jpeg" alt="AI Personnel Australia" className="h-14 w-auto" />
             </div>
             <div className="hidden sm:block">
               <span className="text-xl font-bold text-primary">AI Personnel</span>
