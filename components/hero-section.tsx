@@ -1,8 +1,14 @@
+"use client"
+
+import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Building2, Users } from "lucide-react"
+import { EmployerEnquiryModal } from "@/components/employer-enquiry-modal"
 
 export function HeroSection() {
+  const [enquiryOpen, setEnquiryOpen] = useState(false)
+
   return (
     <section id="home" className="flex flex-col lg:flex-row" style={{ minHeight: "calc(100vh - 88px)", marginTop: "88px" }}>
 
@@ -41,14 +47,12 @@ export function HeroSection() {
 
           {/* CTA */}
           <Button
-            asChild
             size="lg"
+            onClick={() => setEnquiryOpen(true)}
             className="bg-accent hover:bg-accent/90 text-accent-foreground text-xl font-bold px-10 py-7 h-auto rounded-2xl shadow-lg shadow-accent/25 transition-all hover:scale-105"
           >
-            <Link href="#contact">
-              Looking to Hire?
-              <ArrowRight className="ml-3 h-6 w-6" />
-            </Link>
+            Looking to Hire?
+            <ArrowRight className="ml-3 h-6 w-6" />
           </Button>
         </div>
       </div>
@@ -99,6 +103,7 @@ export function HeroSection() {
         </div>
       </div>
 
+      {enquiryOpen && <EmployerEnquiryModal onClose={() => setEnquiryOpen(false)} />}
     </section>
   )
 }

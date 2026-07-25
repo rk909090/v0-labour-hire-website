@@ -100,7 +100,7 @@ export function JobApplicationModal({ job, onClose }: JobApplicationModalProps) 
           <div>
             <p className="text-accent text-xs font-semibold uppercase tracking-wider mb-1">Apply Now</p>
             <h2 id="modal-title" className="text-xl font-bold leading-tight">{job.title}</h2>
-            <p className="text-primary-foreground/70 text-sm mt-0.5">{job.location}</p>
+            {job.location && <p className="text-primary-foreground/70 text-sm mt-0.5">{job.location}</p>}
           </div>
           <button
             onClick={onClose}
@@ -256,13 +256,13 @@ export function JobApplicationModal({ job, onClose }: JobApplicationModalProps) 
                   office@aipersonnelaustralia.com
                 </a>
                 <a
-                  href="https://wa.me/61414425993"
+                  href="https://wa.me/6285713710836"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-xs text-accent hover:underline"
                 >
                   <Phone className="h-3.5 w-3.5 shrink-0" />
-                  WhatsApp: +61 414 425 993
+                  WhatsApp: +62 857 1371 0836
                 </a>
               </div>
             </div>
