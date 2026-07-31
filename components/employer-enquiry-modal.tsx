@@ -23,6 +23,8 @@ interface EmployerEnquiryModalProps {
 export function EmployerEnquiryModal({ onClose }: EmployerEnquiryModalProps) {
   const [formData, setFormData] = useState(INITIAL_FORM)
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [serverError, setServerError] = useState("")
   const [errors, setErrors] = useState<Partial<typeof INITIAL_FORM>>({})
   const [mounted, setMounted] = useState(false)
 
@@ -52,11 +54,29 @@ export function EmployerEnquiryModal({ onClose }: EmployerEnquiryModalProps) {
     return errs
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     const errs = validate()
     if (Object.keys(errs).length > 0) { setErrors(errs); return }
-    setSubmitted(true)
+    setSubmitting(true)
+    setServerError("")
+    try {
+      const res = await fetch("/send-employer-enquiry.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+      const json = await res.json()
+      if (res.ok && json.success) {
+        setSubmitted(true)
+      } else {
+        setServerError(json.error ?? "Something went wrong. Please try again.")
+      }
+    } catch {
+      setServerError("Could not connect. Please check your connection and try again.")
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   const labelClass = "block text-sm font-medium text-foreground mb-1.5"
@@ -186,9 +206,21 @@ export function EmployerEnquiryModal({ onClose }: EmployerEnquiryModalProps) {
               {errors.preferredContact && <p className={errorClass}><AlertCircle className="h-3 w-3" />{errors.preferredContact}</p>}
             </div>
 
+            {/* Server error */}
+            {serverError && (
+              <div className="rounded-lg bg-destructive/10 border border-destructive/30 px-4 py-3 flex items-start gap-2">
+                <AlertCircle className="h-4 w-4 text-destructive shrink-0 mt-0.5" />
+                <p className="text-sm text-destructive">{serverError}</p>
+              </div>
+            )}
+
             {/* Submit */}
-            <Button type="submit" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-semibold py-3 h-12">
-              Send Enquiry
+            <Button
+              type="submit"
+              disabled={submitting}
+              className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-semibold py-3 h-12 disabled:opacity-60"
+            >
+              {submitting ? "Sending..." : "Send Enquiry"}
             </Button>
             <p className="text-xs text-muted-foreground text-center">All fields marked * are required.</p>
           </form>
