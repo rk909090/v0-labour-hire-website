@@ -25,6 +25,8 @@ export function JobApplicationModal({ job, onClose }: JobApplicationModalProps) 
   const [formData, setFormData] = useState(INITIAL_FORM)
   const [cvFile, setCvFile] = useState<File | null>(null)
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [serverError, setServerError] = useState("")
   const [errors, setErrors] = useState<Partial<typeof INITIAL_FORM> & { cv?: string }>({})
   const fileInputRef = useRef<HTMLInputElement>(null)
 
@@ -68,15 +70,39 @@ export function JobApplicationModal({ job, onClose }: JobApplicationModalProps) 
     return newErrors
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     const validationErrors = validate()
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors)
       return
     }
-    // Static submission — in production this would POST to an endpoint
-    setSubmitted(true)
+    setSubmitting(true)
+    setServerError("")
+    try {
+      const fd = new FormData()
+      fd.append("name",        formData.name)
+      fd.append("age",         formData.age)
+      fd.append("gender",      formData.gender)
+      fd.append("nationality", formData.nationality)
+      fd.append("email",       formData.email)
+      fd.append("phone",       formData.phone)
+      fd.append("visaStatus",  formData.visaStatus)
+      fd.append("jobTitle",    job.title)
+      if (cvFile) fd.append("cv", cvFile, cvFile.name)
+
+      const res  = await fetch("/send-job-application.php", { method: "POST", body: fd })
+      const json = await res.json()
+      if (res.ok && json.success) {
+        setSubmitted(true)
+      } else {
+        setServerError(json.error ?? "Something went wrong. Please try again.")
+      }
+    } catch {
+      setServerError("Could not connect. Please check your connection and try again.")
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   const labelClass = "block text-sm font-medium text-foreground mb-1.5"
@@ -267,9 +293,21 @@ export function JobApplicationModal({ job, onClose }: JobApplicationModalProps) 
               </div>
             </div>
 
+            {/* Server error */}
+            {serverError && (
+              <div className="rounded-lg bg-destructive/10 border border-destructive/30 px-4 py-3 flex items-start gap-2">
+                <AlertCircle className="h-4 w-4 text-destructive shrink-0 mt-0.5" />
+                <p className="text-sm text-destructive">{serverError}</p>
+              </div>
+            )}
+
             {/* Submit */}
-            <Button type="submit" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-semibold py-3 h-12">
-              Submit Application
+            <Button
+              type="submit"
+              disabled={submitting}
+              className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-semibold py-3 h-12 disabled:opacity-60"
+            >
+              {submitting ? "Submitting..." : "Submit Application"}
             </Button>
             <p className="text-xs text-muted-foreground text-center">All fields marked * are required before submission.</p>
           </form>
