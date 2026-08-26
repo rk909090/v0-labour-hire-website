@@ -1,5 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# secrets — SMTP mailbox credentials, must never be pushed to the public repo
+/public/smtp-config.php
+
 # dependencies
 /node_modules
 
@@ -25,3 +28,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local dev artifacts
+/dev.log
+/build.log
+/.claude/

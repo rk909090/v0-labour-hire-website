@@ -82,12 +82,7 @@ $cvBase64    = base64_encode($cvData);
 $cvMime      = $fileMime;
 
 // ── SMTP Configuration ────────────────────────────────────────────────────────
-$smtpHost     = 'mail.aipersonnelaustralia.com';
-$smtpPort     = 465;
-$smtpUser     = 'mail@aipersonnelaustralia.com';
-$smtpPassword = 'rgWe&FSV(Whn?s7o';
-$toEmail      = 'office@aipersonnelaustralia.com';
-$fromName     = 'AI Personnel Australia Website';
+require __DIR__ . '/smtp-config.php';   // $smtpHost, $smtpPort, $smtpUser, $smtpPassword, $toEmail, $fromName
 $subject      = "[Job Application] $name — $jobTitle";
 
 // ── HTML Email Body ───────────────────────────────────────────────────────────

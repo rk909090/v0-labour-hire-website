@@ -45,12 +45,7 @@ $preferredContact = htmlspecialchars(trim($data['preferredContact']), ENT_QUOTES
 $submittedAt      = date('d M Y, H:i:s T');
 
 // ── SMTP Configuration ───────────────────────────────────────────────────────
-$smtpHost     = 'mail.aipersonnelaustralia.com';
-$smtpPort     = 465;
-$smtpUser     = 'mail@aipersonnelaustralia.com';
-$smtpPassword = 'rgWe&FSV(Whn?s7o';
-$toEmail      = 'office@aipersonnelaustralia.com';
-$fromName     = 'AI Personnel Australia Website';
+require __DIR__ . '/smtp-config.php';   // $smtpHost, $smtpPort, $smtpUser, $smtpPassword, $toEmail, $fromName
 $subject      = "[Employer Enquiry] $companyName — Staffing Request";
 
 // ── HTML Email Template ──────────────────────────────────────────────────────
