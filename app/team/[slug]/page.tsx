@@ -2,7 +2,7 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { ArrowLeft, Linkedin, Mail, Phone, MapPin, Briefcase, Award, Users } from "lucide-react"
+import { ArrowLeft, MapPin, Briefcase, Award, Users } from "lucide-react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 
@@ -200,38 +200,6 @@ export default async function DirectorProfilePage({ params }: { params: Promise<
                       </li>
                     ))}
                   </ul>
-                </CardContent>
-              </Card>
-
-              {/* Contact */}
-              <Card className="border-0 shadow-lg bg-primary text-primary-foreground">
-                <CardContent className="p-6">
-                  <h3 className="font-semibold mb-4">Get in Touch</h3>
-                  <div className="space-y-3">
-                    <a
-                      href="mailto:office@aipersonnelaustralia.com"
-                      className="flex items-center gap-3 text-primary-foreground/80 hover:text-accent transition-colors"
-                    >
-                      <Mail className="h-4 w-4" />
-                      <span className="text-sm">office@aipersonnelaustralia.com</span>
-                    </a>
-                    <a
-                      href="https://wa.me/61414425993"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-3 text-primary-foreground/80 hover:text-accent transition-colors"
-                    >
-                      <Phone className="h-4 w-4" />
-                      <span className="text-sm">+61 414 425 993</span>
-                    </a>
-                    <a
-                      href="#"
-                      className="flex items-center gap-3 text-primary-foreground/80 hover:text-accent transition-colors"
-                    >
-                      <Linkedin className="h-4 w-4" />
-                      <span className="text-sm">Connect on LinkedIn</span>
-                    </a>
-                  </div>
                 </CardContent>
               </Card>
             </div>
